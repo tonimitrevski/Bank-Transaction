@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Exceptions\InsufficientBalanceException;
-use App\Exceptions\InvalidAccountException;
 use App\Queries\OptimisticLockingTransaction;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -43,6 +40,7 @@ class HomeController extends Controller
                 'amount' => request()->get('deposit'),
                 'type' => request()->get('type')
             ];
+            // We can make a service and inject(constructor or method injection) with repo as a dependency itself
             (new OptimisticLockingTransaction(auth()->id(), $data))->update();
         } catch (\Exception $e) {
             return redirect()
@@ -65,6 +63,7 @@ class HomeController extends Controller
                 'amount' => request()->get('withdraw'),
                 'type' => request()->get('type')
             ];
+            // We can make a service and inject(constructor or method injection) with repo as a dependency itself
             (new OptimisticLockingTransaction(auth()->id(), $data))->update();
         } catch (\Exception $e) {
             return redirect()

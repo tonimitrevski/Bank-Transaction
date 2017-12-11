@@ -1,5 +1,9 @@
 # Backend Developer Test Task.
 
+##Demo
+Check the demo version on this link bellow: <br>
+<a href="http://bank.webless.tk/">Demo link</a>
+
 ## Introduction
 With this test we want to get an idea of your proficiency in backend related web development
 technologies. We will give you a task specification below and you are free to use whatever PHP
@@ -64,9 +68,21 @@ https://laravel.com/docs/5.5
 - Access it on
 ```
 http://your-local-domain/
-http://your-local-domain/
 ```
-
+API Reporting
+``` 
+http://your-local-domain/api/reporting
+```
+WEB routes
+``` 
+http://your-local-domain/login
+http://your-local-domain/register
+http://your-local-domain/reporting
+```
+Auth routes home
+``` 
+http://your-local-domain/home
+```
 ## Known Issues
 - Something that you can find in every piece of code(#the_master_is_not_born_yet)
 
@@ -75,7 +91,7 @@ http://your-local-domain/
 - Creating models (User(Customer), Transaction etc.)
 - SOLID principles (app\Queries\)
 - Laravel Custom Logger (app/Utilities/CustomLogger)) 
-- Business Login folder(app\Services\)
+- Business Logic folder(app\Services\)
 - Implementing Query Object (we could extract to the model - query scope, create a repository, or we could make a single-use query class as OptimisticLockingTransaction) to perform our complex query operations that can be changed often
 <img src="https://bosnadev.com/wp-content/uploads/2015/03/repository_pattern.png" alt="">  <br> 
 In this case, I don't use repository pattern
@@ -87,5 +103,5 @@ In this case, I don't use repository pattern
 
 
 ## ER Diagram
-![alt_text](http://i.imgur.com/bNaxv0o.png "ERD")
+![alt_text](https://i.imgur.com/Art7bVn.png "ERD")
  
