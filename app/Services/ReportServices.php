@@ -11,11 +11,11 @@ namespace App\Services;
 
 use App\Http\Resources\ApiException;
 use App\Http\Resources\ReportingCollection;
-use App\Queries\Reporting;
+use App\Queries\Report;
 use App\Utilities\CustomLogger\LogMsg;
 use Carbon\Carbon;
 
-class ReportingServices
+class ReportServices
 {
     public function getReportingApi($days)
     {
@@ -31,7 +31,7 @@ class ReportingServices
 
     public function getReporting($time)
     {
-        return Reporting::get($time);
+        return Report::get($time);
     }
 
     public function getDate($days)
@@ -46,7 +46,7 @@ class ReportingServices
     private function prepareApiObject($days)
     {
         $time = $this->getDate($days)->toDateString();
-        $data = Reporting::get($time);
+        $data = Report::get($time);
         $data[] = $time;
 
         return $data;

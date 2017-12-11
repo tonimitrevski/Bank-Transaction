@@ -11,9 +11,9 @@
                 </div>
 
                 <div class="panel-body">
-                    @if (session('status'))
+                    @if (session('success'))
                         <div class="alert alert-success">
-                            {{ session('status') }}
+                            {{ session('success') }}
                         </div>
                     @endif
                     <!-- Client info -->
@@ -27,21 +27,29 @@
                     <div class="col-md-12">
                         <h3>Client actions</h3>
                         <div class="col-md-6" style="padding-left: 0;">
-                            <form>
+                            <form method="post" action="{{route('deposit')}}">
+                                {{ csrf_field() }}
                                 <div class="col-md-12" style="padding-left: 0; display:flex; flex-direction: column">
                                     <label>Deposit amount</label>
                                     <input type="text" name="deposit" />
-                                    <span style="color:red;">Error message here</span>
+                                    <input type="hidden" name="type" value="1" />
+                                    @if ($errors->has('deposit'))
+                                        <span style="color:red;">{{ $errors->first('deposit') }}</span>
+                                    @endif
                                     <input class="col-md-4" type="submit" class="btn" value="Send"/>
                                 </div>
                             </form>
                         </div>
                         <div class="col-md-6">
-                            <form>
+                            <form method="post" action="{{route('withdraw')}}">
+                                {{ csrf_field() }}
                                 <div class="col-md-12" style="display:flex; flex-direction: column">
                                     <label>Withdraw amount</label>
                                     <input type="text" name="withdraw" />
-                                    <span style="color:red;">Error message here</span>
+                                    <input type="hidden" name="type" value="0" />
+                                    @if ($errors->has('withdraw'))
+                                        <span style="color:red;">{{ $errors->first('withdraw') }}</span>
+                                    @endif
                                     <input class="col-md-4" type="submit" class="btn" value="Send"/>
                                 </div>
                             </form>

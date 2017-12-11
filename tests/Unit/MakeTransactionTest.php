@@ -103,7 +103,7 @@ class MakeTransactionTest extends TestCase
         (new OptimisticLockingTransaction($user->id, $data))->update();
 
         $this->assertEquals($user->fresh()->balance, 25);
-        $this->assertEquals($user->fresh()->count_transaction, 1);
+        $this->assertEquals($user->fresh()->count_transaction, 0);
     }
 
     /**

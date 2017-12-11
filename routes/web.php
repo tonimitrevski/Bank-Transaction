@@ -19,4 +19,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/deposit', 'HomeController@deposit')->name('deposit');
+Route::post('/withdraw', 'HomeController@withdraw')->name('withdraw');
 Route::get('/reporting/{days?}', 'TransactionController@index')->name('reporting');

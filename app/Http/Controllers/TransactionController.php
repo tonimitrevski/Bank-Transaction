@@ -3,28 +3,28 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\ReportingCollection;
-use App\Services\ReportingServices;
+use App\Services\ReportServices;
 
 class TransactionController extends Controller
 {
     /**
-     * @var ReportingServices
+     * @var ReportServices
      */
-    private $reportingServices;
+    private $reportServices;
 
     /**
      * TransactionController constructor.
-     * @param ReportingServices $reportingServices
+     * @param ReportServices $reporServices
      */
-    public function __construct(ReportingServices $reportingServices)
+    public function __construct(ReportServices $reporServices)
     {
-        $this->reportingServices = $reportingServices;
+        $this->reportServices = $reporServices;
     }
 
     public function index(int $days = 7)
     {
-        $date = $this->reportingServices->getDate($days)->toDateString();
-        $reportings = $this->reportingServices->getReporting($date);
+        $date = $this->reportServices->getDate($days)->toDateString();
+        $reportings = $this->reportServices->getReporting($date);
 
         return view('reporting', compact('reportings', 'date'));
     }

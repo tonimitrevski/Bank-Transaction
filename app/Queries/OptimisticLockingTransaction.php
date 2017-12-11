@@ -21,8 +21,6 @@ class OptimisticLockingTransaction
 
     private $userData = [
         'balance' => 0,
-        'bonus' => 0,
-        'count_transaction' => 0
     ];
 
     /**
@@ -54,11 +52,22 @@ class OptimisticLockingTransaction
             }
 
             $this->prepareAmount($this->data['type']);
-            $this->checkTransactionIsThird();
             $updated = $this->updateUser();
         } while (! $updated);
 
         $this->makeTransaction();
+    }
+
+    private function prepareAmount($type)
+    {
+        if ($type) {
+            $this->userData['balance'] = $this->user->balance + $this->data['amount'];
+            $this->userData['count_transaction'] = $this->user->count_transaction + 1;
+            $this->checkTransactionIsThird();
+            return;
+        }
+
+        $this->userData['balance'] = $this->user->balance - $this->data['amount'];
     }
 
     private function checkTransactionIsThird()
@@ -68,16 +77,6 @@ class OptimisticLockingTransaction
         if ((int) $divisible === $divisible) {
             $this->userData['bonus'] = $this->calculateBonus();
         }
-    }
-
-    private function prepareAmount($type)
-    {
-        if ($type) {
-            $this->userData['balance'] = $this->user->balance + $this->data['amount'];
-        } else {
-            $this->userData['balance'] = $this->user->balance - $this->data['amount'];
-        }
-        $this->userData['count_transaction'] = $this->user->count_transaction + 1;
     }
 
     private function calculateBonus()

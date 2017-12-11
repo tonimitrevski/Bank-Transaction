@@ -8,7 +8,7 @@
 
 namespace App\Queries;
 
-class Reporting
+class Report
 {
     public static function get($time)
     {
