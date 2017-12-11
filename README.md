@@ -64,6 +64,7 @@ https://laravel.com/docs/5.5
 - Access it on
 ```
 http://your-local-domain/
+http://your-local-domain/
 ```
 
 ## Known Issues
@@ -82,6 +83,7 @@ In this case, I don't use repository pattern
 - Implementing Pessimistic vs Optimistic Locking ( https://medium.com/snapptech/pessimistic-vs-optimistic-locking-in-laravel-264ec0b1ba2 )
 - Tests (Feature test - UpdateUserInSameTimeTest folder(tests/Feature), Unit test - MakeTransactionTest folder(tests/Feature))
 - Database Factory pattern seeders (UsersSeeder, CountrySeeder, TransactionsSeeder)
+- barryvdh/laravel-debugbar to manage and test all queries
 
 
 ## ER Diagram

@@ -35,7 +35,7 @@ class TransactionController extends Controller
      */
     public function get(int $days = 7)
     {
-        return $this->reportingServices->getReportingApi($days);
+        return $this->reportServices->getReportingApi($days);
     }
 
 }
